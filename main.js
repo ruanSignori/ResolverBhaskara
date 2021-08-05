@@ -88,7 +88,8 @@ function clearP() {
     const clear = document.querySelector('div#answer');
     clear.innerHTML = '';
 }
-       
+
+//Função para corrigir o resultado final
 function notInteger(x1, x2){
     if (Number.isInteger(x1) === false && Number.isInteger(x2) === false){
         addAnswer(`<strong> x¹ = ${x1.toFixed(2)} </strong>`)
