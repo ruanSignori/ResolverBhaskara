@@ -53,7 +53,6 @@ function answer(valueA, valueB, valueC) {
 
     //Mostrar o x1 e x2
     notInteger(x1,x2)
-
 };
 
 //Adicionar valores para o delta
