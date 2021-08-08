@@ -111,4 +111,6 @@ div#answer{
 p.p-answer{
     text-align: center;
     margin-top: 10px;
+    animation: bounceIn;
+    animation-duration: 1s;
 }
