@@ -28,16 +28,10 @@ function answer(valueA, valueB, valueC) {
     //Variáveis para guardar e calcular os valores necessários
     const delta = isTheDelta(valueA, valueB, valueC);
     let raiz = Math.sqrt(delta);
-    let x1;
-    let x2;
-    !raiz ? raiz = '∄' : raiz
-    if (typeof raiz !== 'number'){
-        x1 = (- valueB) / (2 * valueA);
-        x2 = (- valueB) / (2 * valueA);
-    } else {
-        x1 = (- valueB + raiz) / (2 * valueA);
-        x2 = (- valueB - raiz) / (2 * valueA);
-    }
+
+    let x1 = (- valueB + raiz) / (2 * valueA);
+    let x2 = (- valueB - raiz) / (2 * valueA);
+    
 
     //Calcular função de segundo grau
     addAnswer(`A = ${valueA} B = ${valueB} C = ${valueC}`);
@@ -45,14 +39,16 @@ function answer(valueA, valueB, valueC) {
     addAnswer(`∆ = (${valueB})² - 4 × (${valueA}) × (${valueC})`);
     addAnswer(`∆ = ${valueB}² - 4 × ${valueA} × ${valueC}`);
     addMore(valueA, valueB, valueC);
-    addAnswer(`<strong> ∆ = ${delta} </strong>`)
+    addAnswer(`<strong> ∆ = ${delta} </strong>`);
+    if(delta < 0) return addAnswer(`Se o delta é negativo impede o restante da conta.`);
     addAnswer(`x = <ins>-b ± √∆ </ins><br>2a`);
     addAnswer(`x = <ins> -(${valueB}) ± √(${delta})</ins><br> 2×(${valueA})`);
-    addAnswer(`x =  <ins>${-valueB} ± √${delta} <br></ins> 2×${valueA}`)
-    addAnswer(`x = <ins> ${-valueB} ± ${raiz} </ins><br> ${2 * valueA}`)
+    addAnswer(`x =  <ins>${-valueB} ± √${delta} <br></ins> 2×${valueA}`);
+    addAnswer(`x = <ins> ${-valueB} ± ${raiz} </ins><br> ${2 * valueA}`);
 
     //Mostrar o x1 e x2
-    notInteger(x1,x2)
+    notInteger(x1,x2);
+
 };
 
 //Adicionar valores para o delta
@@ -88,8 +84,7 @@ function clearP() {
     const clear = document.querySelector('div#answer');
     clear.innerHTML = '';
 }
-
-//Função para corrigir o resultado final
+       
 function notInteger(x1, x2){
     if (Number.isInteger(x1) === false && Number.isInteger(x2) === false){
         addAnswer(`<strong> x¹ = ${x1.toFixed(2)} </strong>`)
